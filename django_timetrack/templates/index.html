@@ -1,0 +1,81 @@
+{% extends "base.html"%}
+{% load i18n %}
+
+{% block head %}
+<link rel="stylesheet" type="text/css" media="all" charset="utf-8" href="{{MEDIA_URL}}timetracking/css/base.css" />
+{% endblock %}
+{% block scripts %}
+<script type="text/javascript">
+//<!--
+	var SITE_URL = '{{SITE_URL}}';
+	var MEDIA_URL = '{{MEDIA_URL}}';
+	var SUGGEST_URL = '{% url timetracking:suggest %}'
+	var SUBMIT_URL = '{% url timetracking:submit %}'
+    
+    //	API URLS
+	var PROJECT_API_URL = '{% url timetracking:apiProject %}'
+	var ENTRY_API_URL = '{% url timetracking:apiEntry %}'
+	var ENTRY_LOG_API_URL = '{% url timetracking:apiEntryLog %}'
+	var ENTRY_TIME_API_URL = '{% url timetracking:apiEntryTime %}'	
+	var TAG_API_URL = '{% url timetracking:apiTag %}'
+//-->
+</script>
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.4.2.min.js"></script>
+<script type="text/javascript" src="{{MEDIA_URL}}timetracking/js/jquery.commandline.js"></script>
+<script type="text/javascript" src="{{MEDIA_URL}}timetracking/js/base.js"></script>
+{% endblock %}
+
+{% block title %}{% trans 'Time is not money' %}{% endblock %}
+{% block header %}
+<img src="{{ MEDIA_URL }}timetracking/img/clock-128.png" alt="clock header icon" />
+{% endblock %}
+{% block content %}
+<div id="documentation">
+    <p id="documentation-close">close (x)</p>
+    <div class="content">
+        {% trans 'Most of the stuff is done through the command line.' %}<br />
+        {% trans 'You can add a new project, submit a new entry or create an report' %}<br />
+        {% trans 'Date format: dd/mm/yy hh:mm or dd/mm/yy' %}<br />
+        
+        <h3>{% trans 'Usage' %}:</h3>
+        <p>add <strong>[Project]</strong> with <strong>[Tags]</strong> - <em>{% trans 'this creates a new project with some default tags separated by spaces' %}</em></p>
+        <p><strong>[Entry]</strong> on <strong>[Project]</strong> in <strong>[Tags]</strong> - <em>{% trans 'this adds a new entry to the project' %}</em></p>
+        <p>show <strong>[Projects]</strong> from <strong>[StartDate]</strong> to <strong>[EndDate]</strong> in <strong>[Tags]</strong> - <em>{% trans 'filter selection' %}</em></p>
+        <p>export <strong>[Format]</strong> - <em>{% trans 'exports current selection to some format. Available formats: pdf, csv' %}</em></p>
+        
+        <h3>{% trans 'Examples' %}:</h3>
+        <p>add MyProject with development support billable testing - </p>
+        <p>This is my first descriptions on MyProject in development billable</p>
+        <p>show MyProject, Project2 from 10/12/10 in billable</p>
+        <p>export pdf</p>
+    </div>
+</div>
+<div id="basic-links">
+    <span id="documentation-toggle">{% trans 'Help' %}</span>&nbsp;
+    <a href="/accounts/logout/">{% trans 'Logout' %}</a>
+</div>
+<div id="submit-input-line" class="clearfix">    
+    <input type="text" name="submit" value="" />
+</div>
+<div id="timeline" class="clearfix">
+    {% for project in projects %}
+    <div class="project">
+        <h3>{{project.title}}</h3>
+        <div class="entries">
+            {% for entry in entries %}
+            {% if entry.project == project %}
+            <div class="entry{% if entry.active %} active{% endif %}">
+                <span class="control">{% if entry.active %}{% trans 'start' %}{% else %}{% trans 'stop' %}{% endif %}</span>
+                <span class="time">{{entry.elapsed_time}}</span>
+                <span class="body">{{entry.body}}</span>
+                <span class="log-button">{% trans 'log' %}</span>
+                <span class="edit-button">{% trans 'edit' %}</span>
+                <span class="delete-button">{% trans 'delete' %}</span>
+            </div>
+            {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

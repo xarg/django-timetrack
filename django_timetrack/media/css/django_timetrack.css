@@ -1,0 +1,209 @@
+/* style.css */
+
+/* document reset */
+body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form, fieldset, input, textarea, p, blockquote, th, td { margin:0pt; padding:0pt; } table { border-collapse:collapse; border-spacing:0pt; } fieldset, img { border:0pt none; } address, caption, cite, code, dfn, th, var { font-style:normal; font-weight:normal; } ol, ul { list-style-image:none; list-style-position:outside; list-style-type:none; } caption, th { text-align:left; } h1, h2, h3, h4, h5, h6 { font-size:100%; font-weight:normal; } q:before, q:after { content:'"'; } abbr, acronym { border:0pt none; } * {outline: none}
+
+html {
+	font-family:Segoe UI, Arial;
+	font-size:13px;
+}
+
+/* ********************** begin site styles ******************** */
+body{
+    background: url(../img/bg/wood.jpg) repeat;
+}
+
+#wrapper {
+	width:860px;
+	margin:0 auto;
+}
+
+#header{
+    margin-top: 15px;
+    text-align: center;
+}
+
+#documentation{
+    width: 100%;
+    display: none;
+    -moz-border-radius:7px;
+    -webkit-border-radius:7px;
+    background-color: #FFF7BF;
+    border: 1px solid #000;
+    float: left;
+    margin-bottom: 5px;
+}
+
+#documentation .content{
+    padding: 10px;
+    float: left;
+}
+
+#documentation .content h3{
+    font-size: 1.2em;
+    font-weight: bold;
+    margin: 5px;
+}
+#documentation-close{
+    padding: 10px;
+    font-size: 1.2em;
+    float: right;
+    clear: both;
+    cursor: pointer;
+}
+#documentation-close:hover{
+    text-decoration: underline;
+}
+
+#basic-links{
+	float: right;
+    margin-right: 10px;
+    margin-bottom: 5px;
+    font-size: 1.1em;
+	color: #FFF;
+}
+
+#basic-links a{
+	color: #FFF;
+	text-decoration: none;
+}
+
+#basic-links a:hover{
+	text-decoration: underline;
+}
+
+#documentation-toggle{
+    cursor: pointer;
+}
+#documentation-toggle:hover{
+    text-decoration: underline;
+}
+#submit-input-line{
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+#submit-input-line input{
+    color: #CCC;
+    width: 853px;
+    height: 30px;
+    font-size: 20px;
+    -moz-border-radius:5px;
+    -webkit-border-radius:5px;
+    border: 1px solid #000;
+    padding-left: 3px;
+    padding-top: 5px;
+    background-color: #FFF;
+}
+
+#submit-input-line input.active{
+    color: #000;
+}
+
+/**
+ * Commandline
+*/
+.cmd-loading{
+	background: url(../img/spinner.gif) no-repeat 824px 50% #FFF;
+}
+
+.cmd-results{
+	position: relative;
+}
+/**
+ * END Commandline
+*/
+
+#timeline{
+    -moz-border-radius:7px;
+    -webkit-border-radius:7px;
+    border:1px solid #000;
+    color:#555555;
+    padding:15px;
+    background: #FFF;
+}
+
+.project{
+    float: left;
+    clear: both;
+    padding-bottom: 5px;
+}
+.project h3{
+    color: #AAA;
+    font-size: 18px;
+}
+.entries{
+    font-size: 15px;
+    padding-top: 5px;
+    padding-left: 20px;
+    clear: both;
+}
+.entry{
+    width: 100%;
+    padding-bottom: 3px;
+    clear: both;
+}
+
+.entry div, .entry span{
+    float: left;
+}
+.entry .control{
+    cursor: pointer;
+    width: 50px;
+}
+.entry .control:hover{
+    text-decoration: underline;
+}
+.entry .time{
+    font-weight: bold;
+    font-size: 1.1em;
+    width: 70px;
+}
+.entry .body{
+    width: 560px;
+    color: #444444;
+}
+.entry .log-button{
+    cursor: pointer;
+    width: 30px;
+}
+.entry .log-button:hover{
+    text-decoration: underline;
+}
+
+.entry .edit-button{
+    cursor: pointer;
+    width: 30px;
+}
+.entry .edit-button:hover{
+    text-decoration: underline;
+}
+.entry .delete-button{
+    cursor: pointer;
+    width: 30px;
+}
+.entry .delete-button:hover{
+    text-decoration: underline;
+    color: #F55;
+}
+.entries div.active{
+    background: #F7FFA5;
+}
+
+/* ********************** end site styles ******************** */
+
+/* clearfix code */
+.clearfix:after {
+    content: ".";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+}
+
+.clearfix {display: inline-block;}
+
+/* Hides from IE-mac \*/
+* html .clearfix {height: 1%;}
+.clearfix {display: block;}
+/* End hide from IE-mac */
