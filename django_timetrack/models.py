@@ -1,12 +1,9 @@
-#Python imports
 from datetime import datetime
 
-# Django imports
 from django.db import models
 from django.contrib.auth.models import User
 from django.contrib.sites.models import Site
 
-# App imports
 from fields import TimeSumField
 
 class Project(models.Model):
@@ -35,16 +32,16 @@ class Entry(models.Model):
         """ Start/Stop entry"""
         active_entry = Entry.objects.filter(site=self.site).filter(user=self.user).filter(active=True)
         import pdb; pdb.set_trace()
-        
+
         if active_entry: # We have an active Entry, calc timedelta, update then stop
             entry_time = EntryTime.objects.filter(entry=active_entry).filter(end_datetime = None)
             entry_time.end_datetime = datetime.now()
             entry_time.save()
-            
+
             active_entry.active = False
             active_entry.elapsed_time += timedelta(entry_time.end_datetime, entry_time.start_datetime)
             active_entry.save()
-            
+
             if active_entry != self: # Start if not the same entry
                 self.active = True
                 self.save()

@@ -1,9 +1,10 @@
 from django.contrib import admin
-from timetracking.models import Project, Entry, EntryTime, EntryLog, Tag
+from models import Project, Entry, EntryTime, EntryLog, Tag
 
 class ProjectTagInline(admin.StackedInline):
     model = Tag.projects.through
     extra = 1
+
 class ProjectAdmin(admin.ModelAdmin):
     exclude = ('user', )
     list_diplay = ('title', 'datetime', 'user', )
@@ -12,11 +13,11 @@ class ProjectAdmin(admin.ModelAdmin):
         if not change:
             obj.user = request.user
         obj.save()
-admin.site.register(Project, ProjectAdmin)
 
 class EntryTagInline(admin.StackedInline):
     model = Tag.entries.through
     extra = 1
+
 class EntryAdmin(admin.ModelAdmin):
     exclude = ('user', )
     list_display = ('body', 'project', 'user', 'estimated_time', 'active')
@@ -28,9 +29,10 @@ class EntryAdmin(admin.ModelAdmin):
         if not change:
             obj.user = request.user
         obj.save()
-    
-admin.site.register(Entry, EntryAdmin)
 
 class TagAdmin(admin.ModelAdmin):
     """ Administration for tags """
+
+admin.site.register(Project, ProjectAdmin)
+admin.site.register(Entry, EntryAdmin)
 admin.site.register(Tag, TagAdmin)

@@ -1,12 +1,12 @@
 from piston.handler import BaseHandler
 from piston.utils import rc
 
-from timetracking.models import Project, Entry, EntryLog, EntryTime, Tag
+from models import Project, Entry, EntryLog, EntryTime, Tag
 
 class ProjectHandler(BaseHandler):
     allowed_methods = ('GET','POST','DELETE', 'PUT')
     model = Project
-    
+
     def create(self, REQUEST):
         pass
     def read(self, REQUEST, id = None):
@@ -15,11 +15,11 @@ class ProjectHandler(BaseHandler):
         pass
     def delete(self, REQUEST, id = None):
         pass
-    
+
 class EntryHandler(BaseHandler):
     allowed_methods = ('GET','POST','DELETE', 'PUT')
     model = Entry
-    
+
     def create(self, REQUEST):
         pass
     def read(self, REQUEST, id = None):
@@ -32,7 +32,7 @@ class EntryHandler(BaseHandler):
 class EntryLogHandler(BaseHandler):
     allowed_methods = ('GET','POST','DELETE', 'PUT')
     model = EntryLog
-    
+
     def create(self, REQUEST):
         pass
     def read(self, REQUEST, id = None):
@@ -41,11 +41,11 @@ class EntryLogHandler(BaseHandler):
         pass
     def delete(self, REQUEST, id = None):
         pass
-    
+
 class EntryTimeHandler(BaseHandler):
     allowed_methods = ('GET','POST','DELETE', 'PUT')
     model = EntryTime
-    
+
     def create(self, REQUEST):
         pass
     def read(self, REQUEST, id = None):
@@ -57,7 +57,7 @@ class EntryTimeHandler(BaseHandler):
 class TagHandler(BaseHandler):
     allowed_methods = ('GET','POST','DELETE', 'PUT')
     model = Tag
-    
+
     def create(self, REQUEST):
         pass
     def read(self, REQUEST, id = None):

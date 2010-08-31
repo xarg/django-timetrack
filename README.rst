@@ -1,11 +1,12 @@
 django-timetrack
+================
 
-== Description
-!!! This project is work in progress so it's not functional !!!
-
+Description
+-----------
 Provides a simple interface with a js command line which can be used
 to add time entries, new projects, generate reports, filter buy tags
 and many more.
 
-== Authors
- * Alexandru Plugaru (alexandru.plugaru@gmail.com)
+Authors
+-------
+  * Alexandru Plugaru (alexandru.plugaru@gmail.com)
